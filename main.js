@@ -1,18 +1,23 @@
 function getComputerChoice() {
     var numberItem = Math.floor(Math.random() * (3 - 1 + 1) + 1);
-    return (numberItem == 1) ? 'Rock' : (numberItem == 2) ? 'Paper' : 'Scizzors'
+    return (numberItem == 1) ? 'rock' : (numberItem == 2) ? 'paper' : 'scizzors'
 };
 
 function playRound(playerSelection, computerSelection) {
     playerSelection = playerSelection.toLowerCase();
-    computerSelection = computerSelection.toLowerCase();
-    return (playerSelection == 'rock' && computerSelection == 'scizzors' || playerSelection == 'scizzor' && computerSelection == 'paper' || playerSelection == 'paper' && computerSelection == 'rock') ? 'YOU WIN!' : (playerSelection == computerSelection) ? 'TIE! NEXT ROUND!\n' + game() : 'YOU LOSE!';
+    return (playerSelection == 'rock' && computerSelection == 'scizzors' || playerSelection == 'scizzors' && computerSelection == 'paper' || playerSelection == 'paper' && computerSelection == 'rock') ? 'YOU WIN!' : (playerSelection == computerSelection) ? 'TIE! NEXT ROUND!' : 'YOU LOSE!';
 };
 
 function game() {
-    for (var i = 0; i < 5; i++) {
-        var playerSelection = prompt("CHOOSE! ROCK, PAPER, OR SCIZZORS!\n");
-        return playRound(playerSelection, getComputerChoice());
+    for (var i = 1; i <= 5; i++) {
+        var playerOpt;
+        do {
+            playerOpt = prompt("ROUND " + i + "! CHOOSE! ROCK, PAPER, OR SCIZZORS!\n");
+            playerOpt = playerOpt.toLowerCase();
+        } while (playerOpt !== 'rock' && playerOpt !== 'paper' && playerOpt !== 'scizzors');
+
+        var computerOpt = getComputerChoice();
+        console.log(playRound(playerOpt, computerOpt));
     }
 }
 
