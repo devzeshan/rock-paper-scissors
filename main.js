@@ -17,7 +17,7 @@ function game() {
         } while (playerOpt !== 'rock' && playerOpt !== 'paper' && playerOpt !== 'scizzors');
 
         var computerOpt = getComputerChoice();
-        console.log(playRound(playerOpt, computerOpt));
+        return playRound(playerOpt, computerOpt);
     }
 }
 
